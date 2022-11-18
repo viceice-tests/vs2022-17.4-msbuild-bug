@@ -11,3 +11,7 @@ see https://developercommunity.visualstudio.com/t/MSBuild-no-longer-respects-DOT
 
 `C:\Program Files\dotnet` is removed from PATH, because on my real repo it's also not there, because of the Jenkins docker execution, which passes the host `PATH` to the container.
 On the host is of cause no dotnet installed, so it's also not on `PATH` there.
+
+`ghcr.io/visualon/builder:3.0.2` contains Visual Studio 2022 17.4
+
+`ghcr.io/visualon/builder:2.5.71` contains Visual Studio 2022 17.3
