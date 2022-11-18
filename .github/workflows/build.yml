@@ -1,0 +1,38 @@
+name: build
+
+on:
+  push:
+    branches:
+      - '**'
+
+env:
+  DOTNET_NOLOGO: true
+  ProjectLoadStyle: All
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: windows-latest
+    container:
+      image: ghcr.visualon.de/visualon/builder:3.0.2@sha256:a327b6b9fb832e39860ee316b5326cad62f46c648705d7590996d1ff0f2f129a
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: print env
+        shell: pwsh
+        run: ls env:\
+
+      - name: print path
+        shell: pwsh
+        run: ${env:Path}.Split(';')
+
+      - name: build
+        shell: pwsh
+        run: msbuild Sample
