@@ -11,9 +11,9 @@ see https://developercommunity.visualstudio.com/t/MSBuild-no-longer-respects-DOT
 This is done to get around the `PATH` issue below
 
 
-`ghcr.io/visualon/builder:3.0.2` contains Visual Studio 2022 17.4
+`ghcr.io/visualon/builder:2.5.71` contains Visual Studio 2022 17.4
 
-`ghcr.io/visualon/builder:2.5.71` contains Visual Studio 2022 17.3
+`ghcr.io/visualon/builder:2.5.70` contains Visual Studio 2022 17.3
 
 ## Jenkins PATH issue
 
