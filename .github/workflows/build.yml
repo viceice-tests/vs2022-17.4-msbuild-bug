@@ -31,4 +31,4 @@ jobs:
         run: docker run --rm -t -v ${PWD}:c:\src -w c:\src ${env:IMAGE} pwsh print-env.ps1
 
       - name: build
-        run: docker run --rm -t -v ${PWD}:c:\src -w c:\src ${env:IMAGE} msbuild Sample
+        run: docker run --rm -t -v ${PWD}:c:\src -w c:\src ${env:IMAGE} pwsh build.ps1
