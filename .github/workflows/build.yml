@@ -24,9 +24,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: print env
-        run: docker run --rm -t -v ${PWD}:c:\src -w c:\src $IMAGE pwsh print-env.ps1
+      - name: pull image
+        run: docker pull ${env:IMAGE}
 
+      - name: print env
+        run: docker run --rm -t -v ${PWD}:c:\src -w c:\src ${env:IMAGE} pwsh print-env.ps1
 
       - name: build
-        run: docker run --rm -t -v ${PWD}:c:\src -w c:\src $IMAGE msbuild Sample
+        run: docker run --rm -t -v ${PWD}:c:\src -w c:\src ${env:IMAGE} msbuild Sample
