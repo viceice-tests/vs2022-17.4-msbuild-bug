@@ -8,6 +8,7 @@ on:
 env:
   DOTNET_NOLOGO: true
   ProjectLoadStyle: All
+  IMAGE: ghcr.io/visualon/builder:3.0.2@sha256:a327b6b9fb832e39860ee316b5326cad62f46c648705d7590996d1ff0f2f129a
 
 permissions:
   contents: read
@@ -18,21 +19,14 @@ concurrency:
 
 jobs:
   build:
-    runs-on: windows-latest
-    container:
-      image: ghcr.visualon.de/visualon/builder:3.0.2@sha256:a327b6b9fb832e39860ee316b5326cad62f46c648705d7590996d1ff0f2f129a
+    runs-on: windows-2022
 
     steps:
       - uses: actions/checkout@v3
 
       - name: print env
-        shell: pwsh
-        run: ls env:\
+        run: docker run --rm -t -v ${PWD}:c:\src -w c:\src $IMAGE pwsh print-env.ps1
 
-      - name: print path
-        shell: pwsh
-        run: ${env:Path}.Split(';')
 
       - name: build
-        shell: pwsh
-        run: msbuild Sample
+        run: docker run --rm -t -v ${PWD}:c:\src -w c:\src $IMAGE msbuild Sample
