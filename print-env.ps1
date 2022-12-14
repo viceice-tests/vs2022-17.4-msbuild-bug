@@ -2,7 +2,7 @@ $ErrorActionPreference = 'Stop'
 
 "VS:"
 "-------------------------------------------------------------------------"
-${env:ProgramFiles(X86)}\Microsoft Visual Studio\Installer\vswhere.exe
+& "${env:ProgramFiles(X86)}\Microsoft Visual Studio\Installer\vswhere.exe"
 "-------------------------------------------------------------------------"
 "-------------------------------------------------------------------------"
 
