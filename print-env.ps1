@@ -1,5 +1,11 @@
 $ErrorActionPreference = 'Stop'
 
+"VS:"
+"-------------------------------------------------------------------------"
+${env:ProgramFiles(X86)}\Microsoft Visual Studio\Installer\vswhere.exe
+"-------------------------------------------------------------------------"
+"-------------------------------------------------------------------------"
+
 # remove C:\Program Files\dotnet\ from path to show the bug
 $env:Path = ${env:Path}.Replace("C:\Program Files\dotnet","")
 
